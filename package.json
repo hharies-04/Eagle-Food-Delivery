@@ -1,0 +1,14 @@
+{
+  "name": "foodly-express",
+  "version": "1.0.0",
+  "description": "Premium Zomato/Swiggy inspired food delivery website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eagle Food Delivery — High-Contrast Local Cuisines</title>
+  <meta name="description" content="Order high-quality local dishes from Swiggy & Zomato restaurants with rapid delivery. Priced in Indian Rupees (₹).">
+  <!-- Design Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header>
+    <div class="nav-container">
+      <!-- Brand Logo -->
+      <div class="logo tracking-heading neon-text-glow" id="nav-logo" style="display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-sans-meat); font-size: 26px; color: var(--color-impossible-red); font-weight: 700; text-transform: uppercase;">
+        <svg style="width: 24px; height: 24px; fill: currentColor;" viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        EAGLE
+      </div>
+
+      <!-- Compact Search bar input -->
+      <div class="search-bar-container">
+        <svg class="search-icon" viewBox="0 0 24 24">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+        <input type="text" class="search-input" id="search-input" placeholder="Search restaurants, cuisines, or dishes...">
+      </div>
+
+      <!-- Nav Items -->
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+          <svg style="width: 20px; height: 20px; fill: currentColor" viewBox="0 0 24 24">
+            <path d="M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.8 3.5-8.9 8.2-9.8.6-.1 1.2.3 1.3.9.1.6-.3 1.2-.9 1.3-3.5.7-6 3.7-6 7.6 0 4.4 3.6 8 8 8 3.9 0 6.9-2.5 7.6-6 .1-.6.7-1 1.3-.9.6.1 1 .7.9 1.3-.9 4.7-5 8.2-9.8 8.2z"/>
+          </svg>
+        </button>
+
+        <!-- Cart trigger -->
+        <button class="nav-btn cart-btn ghost-btn-style" id="nav-cart-btn" aria-label="View Shopping Cart">
+          <svg style="width: 18px; height: 18px; fill: currentColor" viewBox="0 0 24 24">
+            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.9 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+          </svg>
+          <span>Cart</span>
+          <span class="cart-badge" id="cart-badge-count" style="display: none;">0</span>
+        </button>
+
+        <!-- Unauthenticated links -->
+        <div class="nav-guest-actions" id="nav-guest-actions">
+          <button class="nav-btn ghost-btn-style" id="nav-login-btn">Login</button>
+          <button class="nav-btn primary-btn-style" id="nav-signup-btn">Sign Up</button>
+        </div>
+
+        <!-- User profile section -->
+        <div class="user-menu" id="nav-user-menu" style="display: none;">
+          <div class="user-profile-btn" id="user-profile-toggle">
+            <div class="user-avatar" id="nav-user-initials">E</div>
+            <span id="nav-user-name">Guest</span>
+            <svg style="width: 16px; height: 16px; fill: currentColor" viewBox="0 0 24 24">
+              <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
+          </div>
+          <div class="user-dropdown" id="user-menu-dropdown">
+            <div class="dropdown-item" id="logout-btn">Log Out</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main>
+    
+    <!-- 1. Home listing section -->
+    <section id="home-view" class="page-view active">
+      
+      <!-- Hero Header Section with bold claims -->
+      <div class="hero-promo">
+        <div class="hero-content">
+          <span class="hero-eyebrow tracking-caption" style="color: var(--color-impossible-red); text-transform: uppercase;">EAGLE ELITE DINING SPOTLIGHT</span>
+          <h1 class="tracking-display-xl neon-text-glow" style="color: var(--color-impossible-red); line-height: 1.05;">EAGLE FOOD<br>DELIVERY</h1>
+          <p class="hero-subtitle tracking-body-lg">
+            Feast on authentic local dishes from Swiggy & Zomato menus under moody candlelight. Saturated yellow accents, quick delivery in Rupees.
+          </p>
+          <div class="masked-food-container">
+            <img class="masked-food-pic" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=300" alt="Delicious Food" onerror="handleImgError(this)">
+            <img class="masked-food-pic-alt" src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&q=80&w=300" alt="Special Dish" onerror="handleImgError(this)">
+          </div>
+          <button class="nav-btn primary-btn-style candlelight-pulse" style="margin: 0 auto; padding: 12px 24px; font-size: 15px; border-radius: 1px;" onclick="document.getElementById('restaurants-grid').scrollIntoView({ behavior: 'smooth' })">
+            ORDER NOW <span style="margin-left: 6px;">➔</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- City Selection Tabs -->
+      <div class="cuisine-filters" id="city-filters-container" style="border-bottom: 1px dashed var(--color-burgundy-stage); padding-bottom: 1rem; margin-bottom: 1rem; justify-content: center; gap: 1rem;">
+        <!-- Injected via app.js -->
+      </div>
+
+      <!-- Cuisine Scroll Selection -->
+      <div class="cuisine-filters" id="cuisine-filters-container">
+        <!-- Injected via app.js -->
+      </div>
+
+      <!-- Grid Filters & Sort -->
+      <div class="listing-controls">
+        <div class="controls-left">
+          <!-- Veg switch -->
+          <label class="toggle-switch-container">
+            <span class="switch">
+              <input type="checkbox" id="veg-only-input">
+              <span class="slider"></span>
+            </span>
+            <span>Pure Veg</span>
+          </label>
+          <!-- Stars rating -->
+          <button class="filter-btn" id="rating-filter-btn">
+            Ratings 4.0+
+          </button>
+        </div>
+        <!-- Select box -->
+        <div>
+          <select class="sort-select" id="sort-select" aria-label="Sort restaurants">
+            <option value="default">Sort by: Relevance</option>
+            <option value="rating">Rating: High to Low</option>
+            <option value="deliveryTime">Delivery Time: Fast to Slow</option>
+            <option value="costLowHigh">Cost: Low to High</option>
+            <option value="costHighLow">Cost: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Matched Restaurants Section -->
+      <div id="matched-restaurants-section" style="margin-bottom: 3.5rem;">
+        <h2 class="menu-section-header tracking-subheading" id="matched-restaurants-header" style="display: none;">MATCHING RESTAURANTS</h2>
+        <div class="restaurants-grid" id="restaurants-grid">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <!-- Matched Dishes Section -->
+      <div id="matched-dishes-section" style="margin-bottom: 3.5rem;">
+        <h2 class="menu-section-header tracking-subheading" id="matched-dishes-header" style="display: none;">MATCHING DISHES</h2>
+        <div class="dishes-list" id="dishes-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Restaurant details and menu page -->
+    <section id="restaurant-details-view" class="page-view">
+      <div class="restaurant-hero-banner" id="restaurant-hero-container">
+        <!-- Injected via app.js -->
+      </div>
+      
+      <div class="detail-layout">
+        <!-- Sidebar Navigation Categories -->
+        <aside class="menu-sidebar" id="menu-sidebar-container">
+          <!-- Injected via app.js -->
+        </aside>
+
+        <!-- Main Dishes Menu Content -->
+        <div class="menu-dishes-panel" id="menu-dishes-panel">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Cart Summary Page -->
+    <section id="cart-view" class="page-view">
+      <!-- Injected via app.js (Includes empty and item summary views) -->
+    </section>
+
+    <!-- 4. Simulated Tracker view -->
+    <section id="tracking-view" class="page-view">
+      <!-- Injected via app.js -->
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>Eagle Food Delivery</h4>
+        <p style="margin-top: 0.5rem;">Searing-hot plant & meat dishes directly to your table. We serve menus from major Swiggy and Zomato nodes, mapped in Rupees (INR ₹).</p>
+      </div>
+      <div class="footer-col">
+        <h4>◂ QUICK LINKS ▸</h4>
+        <ul>
+          <li><a href="#" onclick="navigateTo('home')">Biryani Spotlight</a></li>
+          <li><a href="#" onclick="navigateTo('home')">North Curry Thalis</a></li>
+          <li><a href="#" onclick="navigateTo('home')">Crispy Dosa Platter</a></li>
+          <li><a href="#" onclick="navigateTo('home')">Indo-Chinese Wok</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>◂ POLICIES ▸</h4>
+        <ul>
+          <li><a href="#">Support Center</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Manifesto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Eagle Food Delivery. All item prices strictly represent Indian Rupees (₹). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- MODAL: Credentials Dialog -->
+  <div class="modal-overlay" id="auth-modal-overlay">
+    <div class="auth-modal" id="auth-modal-container">
+      <div class="auth-header">
+        <div class="auth-title-container">
+          <h2 id="auth-modal-title">Welcome Back</h2>
+          <p id="auth-modal-subtitle">Sign in to access your orders and locations</p>
+        </div>
+        <button class="close-modal-btn" id="close-auth-modal" aria-label="Close dialog">
+          <svg style="width: 20px; height: 20px; fill: currentColor" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="auth-body">
+        <form class="auth-form" id="auth-form-el">
+          
+          <!-- Name Input Group (signup only) -->
+          <div class="auth-input-group" id="auth-name-group">
+            <svg class="auth-input-icon" viewBox="0 0 24 24">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+            <input type="text" class="auth-input" id="auth-name-input" placeholder="Full Name">
+          </div>
+
+          <!-- Email -->
+          <div class="auth-input-group">
+            <svg class="auth-input-icon" viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            <input type="email" class="auth-input" id="auth-email-input" placeholder="Email Address" required>
+          </div>
+
+          <!-- Phone Number (signup only) -->
+          <div class="auth-input-group" id="auth-phone-group">
+            <svg class="auth-input-icon" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            <input type="tel" class="auth-input" id="auth-phone-input" placeholder="Phone Number" pattern="[0-9]{10}">
+          </div>
+
+          <!-- Password -->
+          <div class="auth-input-group">
+            <svg class="auth-input-icon" viewBox="0 0 24 24">
+              <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+            </svg>
+            <input type="password" class="auth-input" id="auth-pass-input" placeholder="Password" required minlength="6">
+          </div>
+
+          <button type="submit" class="auth-submit-btn" id="auth-submit-btn">LOGIN</button>
+        </form>
+
+        <div class="auth-switch-prompt" id="auth-prompt-msg">
+          New to the platform? <span class="auth-switch-link" onclick="openAuthModal('signup')">Create an account</span>
+        </div>
+
+        <div class="auth-divider">OR</div>
+
+        <!-- Social logins -->
+        <div class="social-auth-grid">
+          <button class="social-auth-btn" onclick="showToast('Google Sign In clicked (Mocked)', 'success')">
+            <svg viewBox="0 0 24 24" style="fill: #ea4335;"><path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 6.033 1 12.24s5.033 11.24 11.24 11.24c6.478 0 10.793-4.537 10.793-10.986 0-.743-.08-1.3-.176-1.857H12.24z"/></svg>
+            Google
+          </button>
+          <button class="social-auth-btn" onclick="showToast('Facebook Sign In clicked (Mocked)', 'success')">
+            <svg viewBox="0 0 24 24" style="fill: #1877f2;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Replace Cart confirmation -->
+  <div class="modal-overlay" id="replace-cart-modal">
+    <div class="auth-modal" style="max-width: 440px;">
+      <div class="auth-header" style="padding-bottom: 0.5rem;">
+        <div class="auth-title-container">
+          <h2 style="font-size: 1.3rem;">REPLACE CART ITEMS?</h2>
+          <p style="margin-top: 0.25rem;">You can only order from a single restaurant at a time.</p>
+        </div>
+      </div>
+      <div class="auth-body" style="padding-top: 0.5rem;">
+        <p style="font-size: 13px; color: var(--color-blush-highlight); line-height: 1.5; margin-bottom: 1.5rem;">
+          Your cart contains dishes from <strong id="current-cart-restaurant-name" style="color: var(--color-bone-white);"></strong>. 
+          Do you want to discard your current cart and add items from <strong id="pending-restaurant-name" style="color: var(--color-bone-white);"></strong> instead?
+        </p>
+        <div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
+          <button class="nav-btn ghost-btn-style" id="replace-cart-cancel" style="padding: 0.6rem 1.25rem;">Cancel</button>
+          <button class="place-order-btn" id="replace-cart-confirm" style="width: auto; padding: 0.6rem 1.25rem; font-size: 13px;">Replace Items</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dependencies -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
